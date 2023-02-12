@@ -1,5 +1,3 @@
-# notki.github.io
-
 ## Spis treści
 [Temat](#temat)
 
