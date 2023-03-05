@@ -1,136 +1,41 @@
-<!DOCTYPE html>
-<html><head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://jancieslak.github.io/notki.github.io/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://jancieslak.github.io/notki.github.io/css/style.css">
-    
-    
-    <title>Cheat sheets | Intro</title>
-</head><body data-bs-theme="dark" class="sans-serif roboto">
-
-
-
-<div id="content">
-    <div class="w-100 d-flex flex-row">
-        <aside class="vh-100 od-flex flex-column p-3 verflow-auto custom-scrollbar border-3"
-               style="width: 400px">
-            <span class="fs-4">Table of contents</span>
-            <hr>
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#essa">Essa</a></li>
-    <li><a href="#intro">Intro</a></li>
-    <li><a href="#kto-pyta-ten-nie-błądzi">Kto pyta ten nie błądzi</a></li>
-    <li><a href="#potwierdzanie-swojej-wiedzy-poprzez-tłumaczenie">Potwierdzanie swojej wiedzy poprzez tłumaczenie</a></li>
-    <li><a href="#metoda-gumowej-kaczuszki--rubber-duck-debugging">Metoda gumowej kaczuszki 🦆 (Rubber duck debugging)</a></li>
-    <li><a href="#metoda-dziel-i-rządź">Metoda dziel i rządź</a></li>
-    <li><a href="#filtrowanie-wiedzy">Filtrowanie wiedzy</a></li>
-    <li><a href="#praktyka-vs-teoria">Praktyka vs Teoria</a></li>
-    <li><a href="#dziel-się">Dziel się</a></li>
-    <li><a href="#podsumowanie">Podsumowanie</a></li>
-  </ul>
-</nav>
-        </aside>
-        <div class="w-100 vh-100 overflow-auto custom-scrollbar test p-5">
-            <div class="w-100 d-flex flex-column align-items-center">
-                <h1 class="display-2">Intro</h1>
-                <br><br>
-                <div class="post-content">
-                    <h1 id="essa">Essa</h1>
-<h1 id="intro">Intro</h1>
-<p>Uczenie się programowania i wszystkich rzeczy wokół nie jest proste, ale jest tu pare rad / technik, które
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel=stylesheet><link rel=stylesheet type=text/css href=https://jancieslak.github.io/notki.github.io/css/bootstrap.min.css><link rel=stylesheet type=text/css href=https://jancieslak.github.io/notki.github.io/css/style.css><title>Cheat sheets | Intro</title></head><body data-bs-theme=dark class="sans-serif roboto"><div id=content><div class="w-100 d-flex flex-row"><aside class="vh-100 od-flex flex-column p-3 verflow-auto custom-scrollbar border-3" style=width:400px><span class=fs-4>Table of contents</span><hr><nav id=TableOfContents><ul><li><a href=#essa>Essa</a></li><li><a href=#intro>Intro</a></li><li><a href=#kto-pyta-ten-nie-błądzi>Kto pyta ten nie błądzi</a></li><li><a href=#potwierdzanie-swojej-wiedzy-poprzez-tłumaczenie>Potwierdzanie swojej wiedzy poprzez tłumaczenie</a></li><li><a href=#metoda-gumowej-kaczuszki--rubber-duck-debugging>Metoda gumowej kaczuszki 🦆 (Rubber duck debugging)</a></li><li><a href=#metoda-dziel-i-rządź>Metoda dziel i rządź</a></li><li><a href=#filtrowanie-wiedzy>Filtrowanie wiedzy</a></li><li><a href=#praktyka-vs-teoria>Praktyka vs Teoria</a></li><li><a href=#dziel-się>Dziel się</a></li><li><a href=#podsumowanie>Podsumowanie</a></li></ul></nav></aside><div class="w-100 vh-100 overflow-auto custom-scrollbar test p-5"><div class="w-100 d-flex flex-column align-items-center"><h1 class=display-2>Intro</h1><br><br><div class=post-content><h1 id=essa>Essa</h1><h1 id=intro>Intro</h1><p>Uczenie się programowania i wszystkich rzeczy wokół nie jest proste, ale jest tu pare rad / technik, które
 uważam za wartościowe i takie, które sprawią, że będziecie się szybciej uczyć. Jest to wiedza ogólna, którą
 będziecie mogli ją zaaplikować to nauki czegokolwiek. Część z tych tematów pokrywa się w niektórych sprawach, ale
-są to na tyle ważne rzeczy, że warto byłoby je dla was wyodrębnić.</p>
-<h1 id="kto-pyta-ten-nie-błądzi">Kto pyta ten nie błądzi</h1>
-<p>Ważne jest, abyście pytali się, jeśli czegoś nie rozumiecie. Wtedy ja wiem, że rozumiecie temat i możemy
+są to na tyle ważne rzeczy, że warto byłoby je dla was wyodrębnić.</p><h1 id=kto-pyta-ten-nie-błądzi>Kto pyta ten nie błądzi</h1><p>Ważne jest, abyście pytali się, jeśli czegoś nie rozumiecie. Wtedy ja wiem, że rozumiecie temat i możemy
 iść dalej z materiałem. Bez tej wiedzy będziemy tkwić w miejscu, bo podczas omawiania dalszego materiału
 może być tak, że nie będziecie go rozumieć przez braki z wcześniejszych materiałów. Wiedza, którą omawiamy to jest minimum wiedzy potrzebnej do pracy,
-dlatego ważne jest, żebyście rozumieli wszystko to, co chcę wam przekazać i pytać, jeśli nie do końca rozumiecie.</p>
-<h1 id="potwierdzanie-swojej-wiedzy-poprzez-tłumaczenie">Potwierdzanie swojej wiedzy poprzez tłumaczenie</h1>
-<p>Jest to podobny temat do powyższego. Chodzi tu o to, że jeżeli poniekąd rozumiecie dany temat, ale nie jesteście pewni
+dlatego ważne jest, żebyście rozumieli wszystko to, co chcę wam przekazać i pytać, jeśli nie do końca rozumiecie.</p><h1 id=potwierdzanie-swojej-wiedzy-poprzez-tłumaczenie>Potwierdzanie swojej wiedzy poprzez tłumaczenie</h1><p>Jest to podobny temat do powyższego. Chodzi tu o to, że jeżeli poniekąd rozumiecie dany temat, ale nie jesteście pewni
 to, zamiast pytać polecam potwierdzić swoją wiedzę poprzez przedstawienie swojego toku myślenia i jak WY
 postrzegacie informację, którą wam przekazałem. Tłumaczenie drugiej osobie tego, czego się nauczyliśmy potwierdza naszą
 wiedzę i uważam, że dopiero wiedza została przyswojona poprawnie, jeśli bylibyśmy w stanie daną rzecz opisać w najprostszy sposób osobie,
 która tej wiedzy nie posiada. Nie zawsze mamy taką osobę pod ręką i nie zawsze każdy chce rozmawiać o technicznych rzeczach,
 dlatego polecam może pod koniec saveto spotkania (lub na początek następnego) zweryfikować swoją wiedzą poprzez
-przekazanie między sobą wiedzy o nowo nauczonych rzeczach.</p>
-<p>W pracy używałem tego, kiedy koledzy tłumaczyli mi jakąś skomplikowaną rzecz. W trakcie słuchania próbowałem zapamiętać i
+przekazanie między sobą wiedzy o nowo nauczonych rzeczach.</p><p>W pracy używałem tego, kiedy koledzy tłumaczyli mi jakąś skomplikowaną rzecz. W trakcie słuchania próbowałem zapamiętać i
 zrozumieć to, co chcą mi powiedzieć, a na koniec to opowiadałem im w skróconej wersji, żeby potwierdzić, że to, co przekazali
-odebrałem w dobry sposób.</p>
-<h1 id="metoda-gumowej-kaczuszki--rubber-duck-debugging">Metoda gumowej kaczuszki 🦆 (Rubber duck debugging)</h1>
-<p>Temat jest podobny to tego powyżej, ale odnosi się głównie do rozwiązywania problemów, jakie możemy napotkać podczas programowania
+odebrałem w dobry sposób.</p><h1 id=metoda-gumowej-kaczuszki--rubber-duck-debugging>Metoda gumowej kaczuszki 🦆 (Rubber duck debugging)</h1><p>Temat jest podobny to tego powyżej, ale odnosi się głównie do rozwiązywania problemów, jakie możemy napotkać podczas programowania
 i jest na tyle ważna, że warto ją wyodrębnić. Polega ona na tłumaczeniu swojego problemu, gdzie podczas procesu tłumaczenia
-zazwyczaj sami znajdujemy rozwiązanie.</p>
-<p>Na przykład piszemy jakiś kod (lub robimy cokolwiek) i utkniemy na jakiejś części, wtedy zwracamy się do kogokolwiek (najlepiej do kogoś z naszej grupy)
+zazwyczaj sami znajdujemy rozwiązanie.</p><p>Na przykład piszemy jakiś kod (lub robimy cokolwiek) i utkniemy na jakiejś części, wtedy zwracamy się do kogokolwiek (najlepiej do kogoś z naszej grupy)
 lub czegokolwiek (nawet gumowej kaczki). Omawiamy nasz problem, jaki sposób próbujemy go rozwiązać i to, co udało nam się zakodować.
 Podczas tłumaczenia zazwyczaj dostajemy olśnienia, po którym
 w magiczny sposób potrafimy rozwiązać nasz problem. Metoda ta nazywa się metodą gumowej kaczuszki, bo odnosi się do tego,
 że daną metodę możemy stosować na wszystkim nawet możemy mówić do tytułowej gumowej kaczki postawionej na biurku. Chociaż do
 gumowej kaczki nie gadałem to w pracy wspomniane olśnienie wystąpiło wiele razy i nie tylko z mojej strony, ale u innych, kiedy
-tłumaczyli swoje problemy (nawet najbardziej doświadczeni programiści).</p>
-<h1 id="metoda-dziel-i-rządź">Metoda dziel i rządź</h1>
-<p>Jest to metoda szczególnie ważna dla osoby początkującej, polega ona na dzieleniu większych zadań na mniejsze.
-Przykładowo macie zadanie &ldquo;Zrobić grę gdzie użytkownik musi zgadnąć losową liczbę&rdquo; można podzielić na takie zadania / pytania:</p>
-<ul>
-<li>Jak generować losowe liczby w JS</li>
-<li>Jak pobrać liczbę od użytkownika</li>
-<li>Jak porównać losową liczbę z tą od użytkownika</li>
-<li>Jak poinformować użytkownika czy wygrał</li>
-</ul>
-<p>W skrócie jest to metoda pozwalająca na ułatwienie myślenia o problemie jako małe pojedyncze zadania, a nie jako skomplikowaną całość</p>
-<h1 id="filtrowanie-wiedzy">Filtrowanie wiedzy</h1>
-<p>Wiedza, jaką będziecie musieli posiąść jest dość spora, tak więc warto potrafić ją filtrować. Zmniejszając obszar wiedzy,
+tłumaczyli swoje problemy (nawet najbardziej doświadczeni programiści).</p><h1 id=metoda-dziel-i-rządź>Metoda dziel i rządź</h1><p>Jest to metoda szczególnie ważna dla osoby początkującej, polega ona na dzieleniu większych zadań na mniejsze.
+Przykładowo macie zadanie &ldquo;Zrobić grę gdzie użytkownik musi zgadnąć losową liczbę&rdquo; można podzielić na takie zadania / pytania:</p><ul><li>Jak generować losowe liczby w JS</li><li>Jak pobrać liczbę od użytkownika</li><li>Jak porównać losową liczbę z tą od użytkownika</li><li>Jak poinformować użytkownika czy wygrał</li></ul><p>W skrócie jest to metoda pozwalająca na ułatwienie myślenia o problemie jako małe pojedyncze zadania, a nie jako skomplikowaną całość</p><h1 id=filtrowanie-wiedzy>Filtrowanie wiedzy</h1><p>Wiedza, jaką będziecie musieli posiąść jest dość spora, tak więc warto potrafić ją filtrować. Zmniejszając obszar wiedzy,
 jaką musimy przyswoić do minimum przyspieszy proces nauki. Niestety umiejętność oddzielania informacji wartościowych od
-zbędnych przychodzi z czasem.</p>
-<h1 id="praktyka-vs-teoria">Praktyka vs Teoria</h1>
-<p>Teoria jest ważna, ale moim zdaniem ważniejsze jest to, czy umiesz ją zastosować. Nie dajcie się wpędzić
+zbędnych przychodzi z czasem.</p><h1 id=praktyka-vs-teoria>Praktyka vs Teoria</h1><p>Teoria jest ważna, ale moim zdaniem ważniejsze jest to, czy umiesz ją zastosować. Nie dajcie się wpędzić
 w wir poradników na necie, tylko jeśli oglądacie coś, spróbujcie tego potem użyć. Nie chodzi, żeby zawsze to robić, ale po prostu
 trzymajcie bilans praktyki kontra teorii, ponieważ teraz potrzebujecie dużo praktyki, żeby potem rozumieć teorię bez pisania kodu. Przykładem
 może być nowa funkcjonalność języka. Ktoś z dużym doświadczeniem spojrzy na functional, jak się jej używa i do czego i to mu starczy,
-żeby tego potem używać. Wy jeszcze musicie sobie wyrobić taką intuicję i przyswajalność nowych rzeczy.</p>
-<h1 id="dziel-się">Dziel się</h1>
-<p>Chciałbym, żebyście się dzielili na grupce jak coś robicie i np. utkneliście na czymś wtedy druga osoba może pomóc,
+żeby tego potem używać. Wy jeszcze musicie sobie wyrobić taką intuicję i przyswajalność nowych rzeczy.</p><h1 id=dziel-się>Dziel się</h1><p>Chciałbym, żebyście się dzielili na grupce jak coś robicie i np. utkneliście na czymś wtedy druga osoba może pomóc,
 wtedy będziecie się oswajać jak to wygląda. Będziecie mieli okazje popatrzeć jak inna osoba na podobym poziomie pisze.
 Możecie się też chwalić i wrzucać screeny jak coś wam wyjdzie itd. Wiem, że chcecie się nauczyć jak najszybciej, ale
-no nie da się nauczyć tego w pare dni czy też tygodni. Enjoy the process i dzielmy się nim to ja też będę miał większą motywację, bo będę widział że moja nauka ma jakiś sens.</p>
-<h1 id="podsumowanie">Podsumowanie</h1>
-<dl>
-<dt>Kto pyta nie błądzi</dt>
-<dd>Pytania rozwieją twoje wątpliwości o wiedzy podstawowej (i nie tylko), na której możesz budować bardziej złożone tematy
-gdzie bez wiedzy podstawowej nie będziesz w stanie ich zrozumieć</dd>
-<dt>Potwierdzanie swojej wiedzy przez tłumaczenie</dt>
-<dd>Poprzez tłumaczenie nowej wiedzy potwierdzamy to, czego się nauczyliśmy i wtedy obie strony (nauczający-uczący się)
-są pewne przyswojonej wiedzy</dd>
-<dt>Metoda gumowej kaczki</dt>
-<dd>Gdy napotkamy problem warto przedstawić go osobie z grupy. Opisać problem i rozwiązania, których próbowaliśmy. W ten sposób
-znajdziemy odpowiedź u osoby, którą pytamy bądź sami do niej dojdziemy podczas tłumaczenia.</dd>
-<dt>Metoda dziel i rządź</dt>
-<dd>Kiedy problem wydaje się bardzo skomplikowany, podziel go na jak najmniejsze części, które jesteś w stanie wykonać
-i zacznij je rozwiązywać jeden po drugim.</dd>
-<dt>Filtrowanie wiedzy</dt>
-<dd>Odrzucaj zbędne informacje i skup się tylko na tych które są ci potrzebne, nie więcej, nie mniej. Masz dużo nauki przed
-sobą także musisz trzymać potrzebną wiedzę do minimum żeby szybko ogarnąć podstawy, które pomogą ci w przyszłej nauce</dd>
-<dt>Praktyka vs Teoria</dt>
-<dd>Trzymaj bilans pomiędzy nauką rzeczy praktycznych i teoretycznych. Podczas nauki staraj się używać tego czego się uczysz,
-np. Uczysz się jak robić pętle while, to odpal sobie VSCode porób parę pętli z różnymi warunkami żeby w pełni zrozumieć to czego się uczysz</dd>
-<dt>Dziel się</dt>
-<dd>Stwórzmy sobie małą społeczność na grupce, gdzie będziemy wrzucać kodzik, będziemy dzielić się problemami jak nie będziemy
-w stanie ich rozwiązać sami z pomocą internetu, itd.</dd>
-</dl>
-
-                </div>
-                
-            </div>
-        </div>
-    </div>
-
-        </div><script src="https://jancieslak.github.io/notki.github.io/js/feather.min.js"></script>
-<script>
-    feather.replace()
-</script></body>
-</html>
+no nie da się nauczyć tego w pare dni czy też tygodni. Enjoy the process i dzielmy się nim to ja też będę miał większą motywację, bo będę widział że moja nauka ma jakiś sens.</p><h1 id=podsumowanie>Podsumowanie</h1><dl><dt>Kto pyta nie błądzi</dt><dd>Pytania rozwieją twoje wątpliwości o wiedzy podstawowej (i nie tylko), na której możesz budować bardziej złożone tematy
+gdzie bez wiedzy podstawowej nie będziesz w stanie ich zrozumieć</dd><dt>Potwierdzanie swojej wiedzy przez tłumaczenie</dt><dd>Poprzez tłumaczenie nowej wiedzy potwierdzamy to, czego się nauczyliśmy i wtedy obie strony (nauczający-uczący się)
+są pewne przyswojonej wiedzy</dd><dt>Metoda gumowej kaczki</dt><dd>Gdy napotkamy problem warto przedstawić go osobie z grupy. Opisać problem i rozwiązania, których próbowaliśmy. W ten sposób
+znajdziemy odpowiedź u osoby, którą pytamy bądź sami do niej dojdziemy podczas tłumaczenia.</dd><dt>Metoda dziel i rządź</dt><dd>Kiedy problem wydaje się bardzo skomplikowany, podziel go na jak najmniejsze części, które jesteś w stanie wykonać
+i zacznij je rozwiązywać jeden po drugim.</dd><dt>Filtrowanie wiedzy</dt><dd>Odrzucaj zbędne informacje i skup się tylko na tych które są ci potrzebne, nie więcej, nie mniej. Masz dużo nauki przed
+sobą także musisz trzymać potrzebną wiedzę do minimum żeby szybko ogarnąć podstawy, które pomogą ci w przyszłej nauce</dd><dt>Praktyka vs Teoria</dt><dd>Trzymaj bilans pomiędzy nauką rzeczy praktycznych i teoretycznych. Podczas nauki staraj się używać tego czego się uczysz,
+np. Uczysz się jak robić pętle while, to odpal sobie VSCode porób parę pętli z różnymi warunkami żeby w pełni zrozumieć to czego się uczysz</dd><dt>Dziel się</dt><dd>Stwórzmy sobie małą społeczność na grupce, gdzie będziemy wrzucać kodzik, będziemy dzielić się problemami jak nie będziemy
+w stanie ich rozwiązać sami z pomocą internetu, itd.</dd></dl></div></div></div></div></div><script src=https://jancieslak.github.io/notki.github.io/js/feather.min.js></script>
+<script>feather.replace()</script></body></html>
