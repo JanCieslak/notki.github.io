@@ -30,6 +30,11 @@ body {
     background-color: var(--bs-dark-bg-subtle);
 }
 
+.html-content {
+    background-color: var(--bs-dark);
+    padding: 14px;
+}
+
 .custom-scrollbar {
     overflow-y: scroll;
 }
