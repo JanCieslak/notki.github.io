@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel=stylesheet><link rel=stylesheet type=text/css href=https://jancieslak.github.io/notki.github.io/css/bootstrap.min.css><link rel=stylesheet type=text/css href=https://jancieslak.github.io/notki.github.io/css/style.css><title>Cheat sheets | Zadanie #1</title></head><body data-bs-theme=dark class="sans-serif roboto"><div id=content><div class="w-100 d-flex flex-row"><div class="w-100 vh-100 overflow-auto custom-scrollbar test p-5"><div class="w-100 d-flex flex-column align-items-center"><h1 class=display-2>Zadanie #1</h1><br><br><div class=post-content><p>Użyjcie tych tagów, aby stworzyć poniższy formularz:<ul><li>p - do zwykłego tekstu</li><li>label - do opisu każdego input-u (o input chodzi mi input użytkownika, a nie tag input)</li><li>br - do przerzucania rzeczy do następnej linijki bądź do tworzenia większej przestrzeni pomiędzy input-ami</li><li>input - text</li><li>textarea</li><li>input - email</li><li>input - password</li><li>input - date</li><li>input - radio</li><li>input - range</li><li>select</li><li>checkbox</li><li>button bądź input - button => typy: reset oraz submit</li></ul></p><div style="width:100%;border:red 3px solid;border-radius:15px;padding:15px"><form><label for=firstname>Imię</label>
+<input id=firstname name=firstname>
+<label for=lastname>Nazwisko</label>
+<input id=lastname name=lastname><br><br><label for=description>Opis</label><br><textarea id=description name=description rows=2 cols=50>Wpisz coś o sobie</textarea><br><br><label for=email>Email</label>
+<input type=email id=email name=email>
+<label for=password>Hasło</label>
+<input type=password id=password name=password><br><br><label for=birthdate>Data urodzin</label>
+<input type=date id=birthdate name=birthdate><br><br><p>Wybierz mądrze</p><input type=radio id=dogs name=animals>
+<label for=dogs>Psy</label>
+<input type=radio id=cats name=animals>
+<label for=cats>Koty</label>
+<input type=radio id=dodo name=animals>
+<label for=dodo>Dodo</label><br><br><label for=jspain>Bul podczas używania javascript-u</label>
+<input type=range id=jspain name=jspain min=0 max=10 value=0><br><br><label for=cars>Wybierz fure</label>
+<select id=cars name=cars><option>BMW</option><option>Japończyki</option><option>Polska gurom!</option></select><br><br><input type=checkbox id=legal name=legal>
+<label for=legal>Czy przeczytałeś nasz regulamin?... xd</label><br><br><label for=reset-button>Zresetuj formularz</label>
+<input type=reset id=reset-button><br><br><label for=submit-button>Wyślij formularz</label>
+<input type=submit id=submit-button></form></div></div></div></div></div></div><script src=https://jancieslak.github.io/notki.github.io/js/feather.min.js></script>
+<script>feather.replace()</script></body></html>
