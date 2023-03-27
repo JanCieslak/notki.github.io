@@ -1,0 +1,98 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel=stylesheet><link rel=stylesheet type=text/css href=https://jancieslak.github.io/notki.github.io/css/bootstrap.min.css><link rel=stylesheet type=text/css href=https://jancieslak.github.io/notki.github.io/css/style.css><title>Cheat sheets | CSS</title></head><body data-bs-theme=dark class="sans-serif roboto"><div id=content><div class="w-100 d-flex flex-row"><aside class="vh-100 od-flex flex-column p-3 verflow-auto custom-scrollbar border-3" style=width:400px><span class=fs-4>Table of contents</span><hr><nav id=TableOfContents><ul><li><a href=#intro>Intro</a></li><li><a href=#identyfikatory>Identyfikatory</a></li><li><a href=#selectory>Selectory</a><ul><li><a href=#type-selectory---szukanie-tagów-po-typie>Type selectory - szukanie tagów po typie</a></li><li><a href=#id-selectory---szukanie-tagów-po-id-kach>Id selectory - szukanie tagów po id-kach</a></li><li><a href=#class-selector-y---szukanie-tagów-po-klasach>Class selector-y - szukanie tagów po klasach</a></li></ul></li><li><a href=#combos-y>Combos-y</a><ul><li><a href=#sąsiad->Sąsiad (+)</a></li><li><a href=#dziecko->Dziecko (>)</a></li><li><a href=#przodek-->Przodek ( )</a></li><li><a href=#combo->Combo (,)</a></li></ul></li><li><a href=#pseudo-klasy-i-pseudo-elementy>Pseudo-klasy i pseudo-elementy</a></li><li><a href=#funkcje>Funkcje</a></li><li><a href=#podstawowe-atrybuty-i-ich-typy>Podstawowe atrybuty (i ich typy)</a></li><li><a href=#funkcje-1>Funkcje</a></li><li><a href=#flex-box--grid>Flex box / Grid</a></li><li><a href=#animacje>Animacje</a></li><li><a href=#słownik-todo>Słownik (TODO)</a></li></ul></nav></aside><div class="w-100 vh-100 overflow-auto custom-scrollbar test p-5"><div class="w-100 d-flex flex-column align-items-center"><h1 class=display-2>CSS</h1><br><br><div class=post-content><h1 id=intro>Intro</h1><p>Do poszerzania wiedzy jak zawsze zachęcam: <a href=https://www.w3schools.com/css/default.asp>w3school</a>, możecie także rozszerzać notki
+jak będziecie uważać, że jest coś wartego uwagi, bądź zapisania na przyszłość.</p><h1 id=identyfikatory>Identyfikatory</h1><p>Identyfikatory są sposobem na oznaczanie tagów HTML do późniejszego wykorzystania przez CSS-a lub JS-a.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#75715e>&lt;!-- id - identyfikator unikalny na całą stronę, powinien opisywać dany element,
+</span></span></span><span style=display:flex><span><span style=color:#75715e>          np. &#39;website-title&#39; może opisywać tytuł strony w navbarze --&gt;</span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>h1</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;website-title&#34;</span>&gt;&lt;/<span style=color:#f92672>h1</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!-- class - to identyfikator, który może się powtarzać,
+</span></span></span><span style=display:flex><span><span style=color:#75715e>             element może mieć więcej niż jedną klasę, oddzielamy je wtedy spacją, 
+</span></span></span><span style=display:flex><span><span style=color:#75715e>             klasy zazwyczaj opisuje to co robi / dodaje do danego elementu,
+</span></span></span><span style=display:flex><span><span style=color:#75715e>             np. &#39;padding-3&#39; to nasza klasa dodająca jakiś padding (tutaj zależy co oznacza 3) do naszego button-a --&gt;</span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;margin-1 padding-3&#34;</span>&gt;&lt;/<span style=color:#f92672>button</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!-- możemy używać obu identyfikatorów na raz --&gt;</span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;unique-identifier&#34;</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;my-button big-text&#34;</span>&gt;&lt;/<span style=color:#f92672>button</span>&gt;
+</span></span></code></pre></div><p>Identyfikatory definiujemy, aby potem ich użyć w plikach CSS, bądź Javascript</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span>&lt;<span style=color:#f92672>button</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;click-me-button&#34;</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;border-0 padding-3&#34;</span>&gt;Click me&lt;/<span style=color:#f92672>button</span>&gt;
+</span></span></code></pre></div><p>mając taki element html możemy go użyć w CSS-ie następująco</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span>.<span style=color:#a6e22e>padding-3</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>padding</span>: <span style=color:#ae81ff>30</span><span style=color:#66d9ef>px</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>border-0</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>border</span>: <span style=color:#66d9ef>none</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#click-me-button {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>50</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>bądź w JS-ie wypisać w konsoli &lsquo;click&rsquo; jeśli użytkownik kliknie dany przycisk</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span>document.<span style=color:#a6e22e>querySelector</span>(<span style=color:#e6db74>&#39;#click-me-button&#39;</span>).<span style=color:#a6e22e>onClick</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>event</span>) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;click&#39;</span>)
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Jeśli chodzi o klasy CSS-owe istnieją biblioteki, które gromadzą klasy z najczęstszymi wymaganiami od CSS-a, aby
+pisać go jak najmniej, tylko przy pisaniu HTML-a używamy już tych klas, które pozwalają nam na szybsze tworzenie
+tagów o dobrych rozmiarach, pozycji i kolorze. Oto kilka z nich:</p><ul><li><a href=https://tailwindcss.com/>Tailwind</a></li><li><a href=https://getbootstrap.com/>Bootstrap</a></li><li><a href=https://tachyons.io/>Tachyons</a></li></ul><h1 id=selectory>Selectory</h1><p>Selectory to wyrażenia, które pozwalają nam zaaplikować dane style do tagów opisem pasujących do tych wyrażeń.
+Jest kilka typów selectorów i opiszę te najważniejsze poniżej, a na koniec tego rozdziału dam linki do innych selectorów (takich bardziej fancy).</p><h2 id=type-selectory---szukanie-tagów-po-typie>Type selectory - szukanie tagów po typie</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się ze wszystkimi tagami &#39;a&#39; */</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>a</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>background-color</span>: <span style=color:#66d9ef>red</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się ze wszystkimi div-ami */</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>div</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>background-color</span>: <span style=color:#66d9ef>blue</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=id-selectory---szukanie-tagów-po-id-kach>Id selectory - szukanie tagów po id-kach</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się z tagiem o id title */</span>
+</span></span><span style=display:flex><span>#title {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>padding</span>: <span style=color:#ae81ff>15</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>border</span>: <span style=color:#ae81ff>1</span><span style=color:#66d9ef>px</span> <span style=color:#66d9ef>solid</span> <span style=color:#66d9ef>black</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>10</span><span style=color:#66d9ef>px</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=class-selector-y---szukanie-tagów-po-klasach>Class selector-y - szukanie tagów po klasach</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się z każdym tagiem posiadającymi klasę border-3 */</span>
+</span></span><span style=display:flex><span>.<span style=color:#a6e22e>border-3</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>border</span>: <span style=color:#ae81ff>1</span><span style=color:#66d9ef>px</span> <span style=color:#66d9ef>solid</span> <span style=color:#66d9ef>red</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się z każdym div-em posiadającym klasę border-3 */</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>div</span>.<span style=color:#a6e22e>border-3</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>border</span>: <span style=color:#ae81ff>1</span><span style=color:#66d9ef>px</span> <span style=color:#66d9ef>solid</span> <span style=color:#66d9ef>red</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się z tagami h1, tylko którymi posiadają klasy border-3 i padding-3 */</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>h1</span>.<span style=color:#a6e22e>border-3</span>.<span style=color:#a6e22e>padding-3</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>border</span>: <span style=color:#ae81ff>1</span><span style=color:#66d9ef>px</span> <span style=color:#66d9ef>solid</span> <span style=color:#66d9ef>red</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h1 id=combos-y>Combos-y</h1><h2 id=sąsiad->Sąsiad (+)</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się dla każdego przypadku gdzie tag p występuje po tagu img i należą do tego samego parent-a */</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>img</span> <span style=color:#f92672>+</span> <span style=color:#f92672>p</span> {
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=dziecko->Dziecko (>)</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się z li, które jest dzieckiem ul z klasą my-things */</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>ul</span>.<span style=color:#a6e22e>my-things</span> <span style=color:#f92672>&gt;</span> <span style=color:#f92672>li</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>2</span><span style=color:#66d9ef>em</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=przodek-->Przodek ( )</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się z li, jeśli tag ul z klasą my-things jest przodkiem (parent, parent&#39;s parent, parent&#39;s parent&#39;s parent, etc.) tagu li */</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>ul</span>.<span style=color:#a6e22e>my-things</span> <span style=color:#f92672>&gt;</span> <span style=color:#f92672>li</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>2</span><span style=color:#66d9ef>em</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=combo->Combo (,)</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#75715e>/* zmatchuje się z każdym tagiem span i div i zaaplikuje dla nich border 2px red solid */</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>span</span><span style=color:#f92672>,</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>div</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>border</span>: <span style=color:#66d9ef>red</span> <span style=color:#ae81ff>2</span><span style=color:#66d9ef>px</span> <span style=color:#66d9ef>solid</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h1 id=pseudo-klasy-i-pseudo-elementy>Pseudo-klasy i pseudo-elementy</h1><p>Pseudo elementy to już bardziej zaawansowany temat, ale ofc polecam poczytać, szczególnie najczęściej widziałem
+użycie elementów <a href=https://developer.mozilla.org/en-US/docs/Web/CSS/::before>::before</a> i <a href=https://developer.mozilla.org/en-US/docs/Web/CSS/::after>::after</a>.
+Pseudo klasy są prostsze do zrozumienia i częściej używane. Przykładem jednej z najczęściej używanej klasy byłoby :hover
+(czyli klasa, która wskazuje na stan elementu przy najechaniu na niego myszką). Możemy w ten sposób zrobić element div,
+gdzie będzie miał tło czerwone, a po najechaniu na niego myszką będzie miał tło niebieskie.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#f92672>div</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>background-color</span>: <span style=color:#66d9ef>red</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>div</span>:<span style=color:#a6e22e>hover</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>background-color</span>: <span style=color:#66d9ef>blue</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h1 id=funkcje>Funkcje</h1><p>W CSSie możemy znaleźć funkcje pomocnicze, które pomagają nam głównie w obliczeniach. Jedną z częściej używanych funkcji to
+<a href=https://developer.mozilla.org/en-US/docs/Web/CSS/calc>calc</a>. Funkcje są tematem też dość obszernym i nie używa się ich aż tak
+często więc możecie zrobić research na ich temat i zobaczyć listę najważniejszych funkcji.</p><h1 id=podstawowe-atrybuty-i-ich-typy>Podstawowe atrybuty (i ich typy)</h1><p>Atrybuty posiadają swoje typy (możecie je przejrzeć na <a href=https://developer.mozilla.org/en-US/docs/Web/CSS/angle>mdn angle</a>,
+gdzie angle jest jednym z nich. Po lewej Reference > Types macie więcej). Oto kilka przydatnych atrybutów:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css></code></pre></div><h1 id=funkcje-1>Funkcje</h1><h1 id=flex-box--grid>Flex box / Grid</h1><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css><span style=display:flex><span><span style=color:#75715e>/* Flexbox najważniejsze atrybuty */</span>
+</span></span><span style=display:flex><span>:<span style=color:#a6e22e>root</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>display</span>: <span style=color:#66d9ef>flex</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>justify-content</span>: <span style=color:#66d9ef>center</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>align-items</span>: <span style=color:#66d9ef>center</span>;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h1 id=animacje>Animacje</h1><p>Na koniec daje rzeczy do obczajenia, które warto znać lub wiedzieć, że coś takiego istnieje (ale rzadko używane raczej - imo):</p><ul><li><a href=https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors>Attribute selectors</a></li><li><a href=https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors>Universal selectors</a></li><li><a href=https://developer.mozilla.org/en-US/docs/Web/CSS/General_sibling_combinator>General sibling combinator</a></li></ul><h1 id=słownik-todo>Słownik (TODO)</h1></div></div></div></div></div><script src=https://jancieslak.github.io/notki.github.io/js/feather.min.js></script>
+<script>feather.replace()</script></body></html>
