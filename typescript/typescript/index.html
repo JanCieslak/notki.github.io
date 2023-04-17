@@ -1,0 +1,366 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel=stylesheet><link rel=stylesheet type=text/css href=https://jancieslak.github.io/notki.github.io/css/bootstrap.min.css><link rel=stylesheet type=text/css href=https://jancieslak.github.io/notki.github.io/css/style.css><title>Cheat sheets | Typescript</title></head><body data-bs-theme=dark class="sans-serif roboto"><div id=content><div class="w-100 d-flex flex-row"><aside class="vh-100 od-flex flex-column p-3 verflow-auto custom-scrollbar border-3" style=width:400px><span class=fs-4>Table of contents</span><hr><nav id=TableOfContents><ul><li><a href=#intro>Intro</a><ul><li><a href=#typy-types>Typy (Types)</a></li><li><a href=#operatory>Operatory</a><ul><li><a href=#operatory-arytmetyczne>Operatory arytmetyczne</a></li><li><a href=#operatory-relacji>Operatory relacji</a></li><li><a href=#operatory-logiczne>Operatory logiczne</a></li><li><a href=#operatory-przypisania>Operatory przypisania</a></li><li><a href=#tenary-operator>Tenary operator</a></li><li><a href=#string-operator>String operator</a></li></ul></li><li><a href=#zmienne--stałe-variables--constants>Zmienne / Stałe (Variables / Constants)</a><ul><li><a href=#zakres-długości-życia-zmiennych--stałych-variable-scopes>Zakres długości życia zmiennych / stałych (Variable Scopes)</a></li></ul></li><li><a href=#konwersje-typów-type-conversions>Konwersje typów (Type conversions)</a></li><li><a href=#przepływ-sterowania-programem-control-flow>Przepływ sterowania programem (Control Flow)</a><ul><li><a href=#if>if</a></li><li><a href=#pętle-loops>Pętle (Loops)</a><ul><li><a href=#for>for</a></li><li><a href=#while>while</a></li><li><a href=#do-while>do while</a></li></ul></li></ul></li><li><a href=#funkcje>Funkcje</a></li><li><a href=#enum-y>Enum-y</a></li><li><a href=#klasy-i-objekty>Klasy i Objekty</a></li><li><a href=#projekty-o-wielu-plikach-export--import>Projekty o wielu plikach (export / import)</a></li><li><a href=#słownik>Słownik</a></li></ul></li></ul></nav></aside><div class="w-100 vh-100 overflow-auto custom-scrollbar test p-5"><div class="w-100 d-flex flex-column align-items-center"><h1 class=display-2>Typescript</h1><br><br><div class=post-content><h1 id=intro>Intro</h1><p>Typescript jest to język zbudowany na Javascipcie. Zaletą takiego rozwiązania jest to, że
+Typescirpt może używać tych samych rzeczy (bibliotek) co Javascript przy czym dając jego zalety.
+Do zalet można głównie zaliczyć typy, ale Typescript daje nam o wiele więcej.
+Konfiguracja Typescripta znajduje się w pliku <strong>tsconfig.json</strong>. Definiuje on w jaki sposób
+możemy używać Typescripta i do jakiej formy Javascripta się skompiluje.</p><h2 id=typy-types>Typy (Types)</h2><p>Jedną z wad (bądź zalet) w Javascripcie jest to że nie musimy podawać typu - <a href=https://pl.wikipedia.org/wiki/Typowanie_dynamiczne>dynamicznie typowany język</a>.
+Typescript rozwiązuje to dodając typy. Żebyście zrozumieli dlaczego typy są ważne dam przykład z funkcją.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#75715e>// kod Javascript
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>addTwenty</span>(<span style=color:#a6e22e>input</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>input</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>addTwenty</span>(<span style=color:#ae81ff>20</span>)) <span style=color:#75715e>// returns 40 - number
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>addTwenty</span>(<span style=color:#e6db74>&#39;20&#39;</span>)) <span style=color:#75715e>// returns &#39;2020&#39; - string
+</span></span></span></code></pre></div><p>Jak widać fukncja dodaje 20 do tego co przyjmuje. Jeśli przyjmie liczbę doda do niej 20 i zwróci,
+ale jeśli wrzucimy do niej coś czego autor funkcji zapewne nie chciał, np. string. To wtedy
+funkcja zwróci nam stringa, w tym przypadku &lsquo;2020&rsquo;, ponieważ my wrzucamy &lsquo;20&rsquo; a Javascript
+próbując dodać tekst do liczby, zamienia liczbę w tekst automatycznie i dodaje tekst do tesktu, dlatego &lsquo;2020&rsquo;.
+Dzięki Typescriptowi, możemy temu zapobiec nadając funkcji typy, aby użytkownik tej funkcji wiedział jak jej używać.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// kod Typescript
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>addTwenty</span>(<span style=color:#a6e22e>input</span>: <span style=color:#66d9ef>number</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>number</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>input</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>addTwenty</span>(<span style=color:#ae81ff>20</span>)) <span style=color:#75715e>// returns 40 - number
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>addTwenty</span>(<span style=color:#e6db74>&#39;20&#39;</span>)) <span style=color:#75715e>// Error: type string when number was expected
+</span></span></span></code></pre></div><p>Jak widzicie na przykładzie dodałem 2 annotacje (oznaczenia) typów, jeden dla parametru input,
+że ma mieć typ number i na końcu funkcji mówiący o tym co ta funkcja będzie zwracać.</p><p>Mamy wiele typów, które każdy musi znać.
+Będzie ich więcej w przyszłości, ale na razie ograniczymy sobie ten zbiór na dla prostoty.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>liczba1</span>: <span style=color:#66d9ef>number</span> <span style=color:#75715e>// jeśli od razu nie przypisujemy wartości przypisujemy od razu typ
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>liczba1</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>liczba2</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span> <span style=color:#75715e>// jeśli prawa strona = jest znana to wtedy możemy pominąć typ (Typescript go raczej zgadnie)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>liczba3</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span> <span style=color:#75715e>// dla pokazania typów ja jednak będę je pisał, żebyście wiedzieli jaka prawa strona = da jaki typ
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>hex</span>   : <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0xff</span> <span style=color:#75715e>// 255 w systemie szesnastkowym
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>binary</span>: <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span><span style=color:#a6e22e>b100</span> <span style=color:#75715e>// 4 w systemie binarnym
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>color1</span>: <span style=color:#66d9ef>string</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;blue&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>color2</span>: <span style=color:#66d9ef>string</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;red&#34;</span> <span style=color:#75715e>// stringi mogą być pisane za pomocą pojedyńczych lub podwójnych cudzysłowiów lub ``
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>colors</span>: <span style=color:#66d9ef>string</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>color1</span><span style=color:#e6db74>}</span><span style=color:#e6db74> </span><span style=color:#e6db74>${</span><span style=color:#a6e22e>color2</span><span style=color:#e6db74>}</span><span style=color:#e6db74>`</span> <span style=color:#75715e>// `` daje nam tak zwane string interpolation, dzięki której możemy zawierać inne zmienne w tekście (nie tylko inne stringi)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>multiLine</span>: <span style=color:#66d9ef>string</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>- one
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>- two
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>- three
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>`</span> <span style=color:#75715e>// w `` stringu możemy też pisać wielo wierszowe stringi (nie można tego robić za pomocą cudzysłowiowych stringów)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>isDone1</span>: <span style=color:#66d9ef>boolean</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>isDone2</span>: <span style=color:#66d9ef>boolean</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>
+</span></span></code></pre></div><blockquote><p>Na razie wystarczy, jest ich o wiele więcej i polecam w wolnym czasie dowiadywać się jak najwięcej o nich.
+<a href=https://www.typescriptlang.org/docs/handbook/basic-types.html>Tutaj</a> macie linka
+do stroki z najważniejszymi typami</p></blockquote><h2 id=operatory>Operatory</h2><p>Operatory są funkcje, które zachodzą pomiędzy zmiennymi, liczbami, stringami i innymi typami.
+Jest ich parę typów, ale przedstawimy sobie te najważniejsze, ale odsyłam <a href=https://www.tutorialspoint.com/typescript/typescript_operators.htm>tutaj</a> po więcej info.</p><h3 id=operatory-arytmetyczne>Operatory arytmetyczne</h3><p>Są to operatory to wykonywania obliczeń matematycznych</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// Dodawanie (+)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>dodawanie</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>dodawanie</span>) <span style=color:#75715e>// 4
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Odejmowanie (-)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>odejmowanie</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>-</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>odejmowanie</span>) <span style=color:#75715e>// 0
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Mnożenie (*)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>mnozenie</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>mnozenie</span>) <span style=color:#75715e>// 4
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Reszta z dzielenia (%)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>reszta</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span> <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>reszta</span>) <span style=color:#75715e>// 1
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// dzielenie (/)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>dzielenie</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>dzielenie</span>) <span style=color:#75715e>// 2
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Inkrementacja (++)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>inkrementacja</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>inkrementacja</span><span style=color:#f92672>++</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>inkrementacja</span>) <span style=color:#75715e>// 3
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Dekrementacja (--)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>dekrementacja</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>dekrementacja</span><span style=color:#f92672>--</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>dekrementacja</span>) <span style=color:#75715e>// 1
+</span></span></span></code></pre></div><h3 id=operatory-relacji>Operatory relacji</h3><p>Operator, który na podstawie podanych argumentów zwraca wartość boolean (true/false),
+w zależności czy dana operacja spełnia warunek operatora.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// Większy niż
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>wiekszy</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>20</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>wiekszy</span>) <span style=color:#75715e>// true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Mniejszy niż
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>mniejszy</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>20</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>mniejszy</span>) <span style=color:#75715e>// true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Większy bądź równy
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>wiekszyLubRowny</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span> <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>wiekszyLubRowny</span>) <span style=color:#75715e>// true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Mniejszy bądź równy
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>mniejszyLubRowny</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span> <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>mniejszyLubRowny</span>) <span style=color:#75715e>// true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Równy
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>rowny</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span> <span style=color:#f92672>===</span> <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>rowny</span>) <span style=color:#75715e>// true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Nierówny
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>nieRowny</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>11</span> <span style=color:#f92672>!==</span> <span style=color:#ae81ff>10</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>nieRowny</span>) <span style=color:#75715e>// true
+</span></span></span></code></pre></div><h3 id=operatory-logiczne>Operatory logiczne</h3><p>Operatory działające na wartościach boolean, łączące 2 lub więcej warunków.
+Po więcej kombinacji zapraszam <a href=https://www.realdigital.org/img/228d4788d26e286b5706f6d644ddee8b.svg>tutaj</a>.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// i (&amp;&amp;) - jest prawdą jeśli obie strony są true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>and</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2</span> <span style=color:#75715e>// true i true = true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>and2</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span> <span style=color:#75715e>// true i false = false
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// lub (||) - jest nieprawdą jeśli obie strony są false
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>or</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>||</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2</span> <span style=color:#75715e>// true lub true = true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>or2</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>||</span> <span style=color:#ae81ff>4</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span> <span style=color:#75715e>// true lub false = true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// zaprzeczenie (!) - odwraca wartość boolean (z true na false i z false na true)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>not</span> <span style=color:#f92672>=</span> <span style=color:#f92672>!</span>(<span style=color:#ae81ff>2</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span>) <span style=color:#75715e>// zaprzeczenie true = true
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>not2</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>(<span style=color:#ae81ff>2</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>1</span>) <span style=color:#75715e>// true i zaprzeczenie false = false
+</span></span></span></code></pre></div><h3 id=operatory-przypisania>Operatory przypisania</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// Przypisanie (=)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#75715e>// zwykłe przypisanie wartości do zmiennej
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Reszta operatorów to ułatwienia, które zastępują dłuższy zapis
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Dodaj i przypisz (+=)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>b</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>b</span> <span style=color:#f92672>+=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>b</span>) <span style=color:#75715e>// -&gt; 4
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>b</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>b</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>2</span> <span style=color:#75715e>// jak widzicie b += 2 jest uproszczeniem dla zapisu po lewo, czyli b = b + 2
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>b</span>) <span style=color:#75715e>// -&gt; 6
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Odejmij i przypisz (-=)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>c</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>c</span> <span style=color:#f92672>-=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>c</span>) <span style=color:#75715e>// -&gt; 0
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// pomnóż i przypisz (*=)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>d</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>d</span> <span style=color:#f92672>*=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>d</span>) <span style=color:#75715e>// -&gt; 4
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// podziel i przypisz (/=)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>e</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>e</span> <span style=color:#f92672>/=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>e</span>) <span style=color:#75715e>// -&gt; 1
+</span></span></span></code></pre></div><h3 id=tenary-operator>Tenary operator</h3><p>Jest to trochę trudniejszy operator, ale na pewno przydatny. Jest to skrót dla if-a i przypisania wartości.
+Załóżmy, że chcemy coś przypisać do wartości jeśli warunek jest spełniony, a jeśli nie to coś innego.
+Podaję przykład</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>16</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>isAdult</span>: <span style=color:#66d9ef>boolean</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>age</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>18</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>isAdult</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>} <span style=color:#66d9ef>else</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>isAdult</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>isAdult</span>) <span style=color:#75715e>// false
+</span></span></span></code></pre></div><p>Dzięki tenary operator możemy przypisać isAdult w jednej linijce.</p><p>Szablon</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#75715e>/* warunek */</span>  <span style=color:#f92672>?</span>  <span style=color:#75715e>/* wartość jeśli true */</span>  <span style=color:#f92672>:</span>  <span style=color:#75715e>/* wartość jeśli false */</span>
+</span></span></code></pre></div><p>Rozwiązanie</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>16</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>isAdult</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>age</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>18</span> <span style=color:#f92672>?</span> <span style=color:#66d9ef>true</span> <span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Możemy także wstawiać wszystko w pola wartość i rozbudowywać warunki,
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// ale zasada tego operatoa jest taka żeby go używać, jeśli będzie krótka
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// nie zaleca się robić długich operacji na tenary operatorze
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>ageName</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>age</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>18</span> <span style=color:#f92672>?</span> <span style=color:#e6db74>&#34;dorosły&#34;</span> <span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;nieletni&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>hasCar</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>isAdultAndHasCar</span> <span style=color:#a6e22e>age</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>18</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#a6e22e>hasCar</span> <span style=color:#f92672>===</span> <span style=color:#66d9ef>true</span> <span style=color:#f92672>?</span> <span style=color:#66d9ef>true</span> <span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>
+</span></span></code></pre></div><p>Zauważcie że dzięki temu mogłem zrobić isAdult jako <strong>const</strong> co jest bardzo ważne,
+ponieważ zmniejsza to ryzyko, że gdzieś później w programie ta wartość zostanie zmieniona,
+bądź nadpisana.</p><h3 id=string-operator>String operator</h3><p>Konkatenacja stringa (łączenie obu tekstów)</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>hello</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;hello&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>world</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;world&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>helloWorld</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>hello</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; &#34;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>world</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>helloWorld</span>) <span style=color:#75715e>// &#34;hello world&#34;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>hello</span> <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; world&#34;</span>) <span style=color:#75715e>// &#34;hello world&#34;
+</span></span></span></code></pre></div><h2 id=zmienne--stałe-variables--constants>Zmienne / Stałe (Variables / Constants)</h2><p>Już powinniście wiecieć, że zmienne to wartości, które mogą się zmienić w trakcie
+działania naszego programu (i jego &ldquo;życia&rdquo; - o tym zaraz) i tworzymy je przy pomocy <strong>let</strong>, a stałe są to wartości
+nie zmieniające się w trakcie działania programu (i jego &ldquo;życia&rdquo;).
+Zmienne i stałe tworzymy w ten sposób</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>/* modyfikator (let/const) nazwa zmiennej = jego wartość, np. */</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>age</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>16</span>
+</span></span></code></pre></div><h3 id=zakres-długości-życia-zmiennych--stałych-variable-scopes>Zakres długości życia zmiennych / stałych (Variable Scopes)</h3><p>Do zmiennych i ich scope-ów polecam poczytać <a href=https://www.tutorialspoint.com/typescript/typescript_variables.htm>tutaj</a>
+W scope-ach, chodzi o to że dana zmienna może być użyta w zależności od tego jaki jest jej, scope
+i od niego zależy żywotność danej zmiennej.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>if</span> (<span style=color:#ae81ff>20</span> <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>10</span>) { <span style=color:#75715e>// początek scope-u
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>abc</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>abc</span>) <span style=color:#75715e>// -&gt; 123
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>} <span style=color:#75715e>// koniec scope-u (wszystkie wartości w scop-ie zostają uwolnione z pamięci i nie możemy ich więcej używać)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>abc</span>) <span style=color:#75715e>// Error: Nie ma takiej zmiennej jak abc
+</span></span></span></code></pre></div><p>W powyższym przykładzie widzimy, że abc ma scope if-a, czyli może być używany tylko w if-ie.
+Scope zazwyczaj jest oznaczany klamrami {} (używanych, w np. if, for, while, do..while, function),
+a żywotność danej zmiennej kończy się z } klamrą,
+a pamięć naszego programu zmniejsza się o daną zmienną (ponieważ nasz komputer nie potrzbuje
+trzymać jej w pamięci). Może to być dla wasz cięzki koncept, ale polecam zajrzeć
+<a href=https://www.tutorialspoint.com/typescript/typescript_variables.htm>tutaj</a> po bardziej
+szczegółowe i przygotowane wytłumaczenie.</p><p>Daję jeszcze przykład, którego chyba nie ma w linku i jest to tworzenie scope-u za pomocą {}</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> (<span style=color:#66d9ef>true</span>) { <span style=color:#75715e>// definiujemy scope
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>b</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  { <span style=color:#75715e>// definiujemy scope
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>const</span> <span style=color:#a6e22e>c</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>a</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>b</span>)
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>c</span>) <span style=color:#75715e>// Error: nie ma takiej zmiennej jak b
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  } <span style=color:#75715e>// koniec scope-u (umiera &#39;c&#39; :&lt;)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>a</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>b</span>)
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>c</span>) <span style=color:#75715e>// Error: nie ma takiej zmiennej jak b
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>} <span style=color:#75715e>// koniec scope-u (umiera &#39;b&#39; :&lt;)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>a</span>)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>b</span>) <span style=color:#75715e>// Error: nie ma takiej zmiennej jak b
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>c</span>) <span style=color:#75715e>// Error: nie ma takiej zmiennej jak b
+</span></span></span></code></pre></div><h2 id=konwersje-typów-type-conversions>Konwersje typów (Type conversions)</h2><p>Na razie najważniejsze konwersje to string => number i number => string</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// string =&gt; number
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>num</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>123</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>stringNum</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>num</span>.<span style=color:#a6e22e>toString</span>()
+</span></span><span style=display:flex><span><span style=color:#75715e>// lub
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>stringNum2</span> <span style=color:#f92672>=</span> String(<span style=color:#a6e22e>num</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// number =&gt; string
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>str</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;123&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> Number(<span style=color:#a6e22e>str</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>// lub
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> parseInt(<span style=color:#a6e22e>str</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// jeśli mamy liczbę zmiennoprzecinkową w stringu możemy użyć parseFloat, inaczej wszystko po przecinku zostanie zaokrąglone
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>realString</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;123.123&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>integer</span> <span style=color:#f92672>=</span> parseInt(<span style=color:#a6e22e>realString</span>) <span style=color:#75715e>// =&gt; 123
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>real</span> <span style=color:#f92672>=</span> parseFloat(<span style=color:#a6e22e>realString</span>) <span style=color:#75715e>// =&gt; 123.123
+</span></span></span></code></pre></div><h2 id=przepływ-sterowania-programem-control-flow>Przepływ sterowania programem (Control Flow)</h2><p>Ta sekcja omawia rzeczy, za pomocą których możemy przełamać fakt, że nasz program idzie
+linijka po linijce, od góry do dołu. Dzięki tym narzędziom, możemy tworzyć pętle, bądź
+rozgałęzienia naszego programu, które wykonają się tylko jeśli jakiś warunek zostanie spełniony.</p><h3 id=if>if</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>if</span> (<span style=color:#75715e>/* warunek */</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// kod wykonujący się tylko jeśli warunek zostaje spełniony
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span></code></pre></div><h3 id=pętle-loops>Pętle (Loops)</h3><p>Pętle uławiają nam zazwyczaj w sytuacjach gdzie musimy wykonać daną akcję x razy
+przy spełnieniu danego warunku. Na przykład jeśli chcemy przeczytać plik tekstowy
+linijka po linijce, możemy użyć do tego pętli. Najpierw oteramy plik (inicjalizacja) i czytać plik dopóki (warunek)
+nie dojdziemy do końca pliku, a w każdej iteracji pętli przechodzić do następnej linii (inkrementacja).
+Typów pętli jest parę, każda z nich mogłaby być zastąpniona jedną (nie ważne jaką), ale
+jest ich parę ponieważ w zależności od wymagań, jedna może być bardziej dostosowana
+do naszego problemu niż druga.</p><h4 id=for>for</h4><p>Szkielet</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>for</span> (<span style=color:#75715e>/* inicjalizacja */</span>; <span style=color:#75715e>/* warunek */</span>; <span style=color:#75715e>/* inkrementacja */</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// kod wykonujący się w pętli tak długo jak warunek zostaje spełniony (pętla)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span></code></pre></div><p>Na przykład</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>let</span> <span style=color:#a6e22e>n</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>; <span style=color:#a6e22e>n</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>10</span>; <span style=color:#a6e22e>n</span><span style=color:#f92672>++</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>n</span> <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>`</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>n</span><span style=color:#e6db74>}</span><span style=color:#e6db74> to liczba parzysta`</span>) <span style=color:#75715e>// -&gt; 0, 2, 4, 6, 8
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h4 id=while>while</h4><p>Szkielet</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>while</span> (<span style=color:#75715e>/* warunek */</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// kod wykonujący się w pętli tak długo jak warunek zostaje spełniony (pętla)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span></code></pre></div><p>Na przykład</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>while</span> (<span style=color:#66d9ef>number</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>10</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>number</span><span style=color:#f92672>++</span> <span style=color:#75715e>// zwiększamy number o 1 na koniec każdej pętli
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#66d9ef>number</span>) <span style=color:#75715e>// -&gt; 9
+</span></span></span></code></pre></div><h4 id=do-while>do while</h4><p>Szkielet</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>do</span> {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// kod wykonujący się w pętli tak długo jak warunek zostaje spełniony (pętla)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>} <span style=color:#66d9ef>while</span> (<span style=color:#75715e>/* warunek */</span>) 
+</span></span></code></pre></div><p>Na przykład</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#66d9ef>number</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>do</span> {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>number</span><span style=color:#f92672>++</span> <span style=color:#75715e>// zwiększamy number o 1 na koniec każdej pętli
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>} <span style=color:#66d9ef>while</span> (<span style=color:#66d9ef>number</span> <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>10</span>) 
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#66d9ef>number</span>) <span style=color:#75715e>// -&gt; 10
+</span></span></span></code></pre></div><h2 id=funkcje>Funkcje</h2><p>Funkcji używamy do reużycia danej funkcjonalności. Na przykład robimy grę kółko i krzyrzyk
+i potrzebujemy funkcji która wykona turę, ponieważ tury są wykonywane co ruch, warto zawrzeć
+tą funkcjonalność w funkcji. Kolejnym przykładem z gry może być funkcja sprawdzająca czy któryś
+z graczy wygrał.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-typescript data-lang=typescript><span style=display:flex><span><span style=color:#75715e>// funkcje możemy pisać na dwa sposoby
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// to jest tradycyjny sposób
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>sayHello() {</span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;Hello&#39;</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// tutaj przypisujemy anonimową funkcję do wartości sayHello2
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>sayHello2</span> <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;Hello2&#39;</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// funkcje wywołujemy w ten sposób
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>sayHello</span>() <span style=color:#75715e>// prints &#39;Hello&#39;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>sayHello2</span>() <span style=color:#75715e>// prints &#39;Hello2&#39;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// funkcje mogą przyjmować argumenty i zwracać wartości (wtedy podajemy ich typy)
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// jeśli nic nie zwracamy to nie musimy nic pisać
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>say</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>string</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>string</span> <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>message</span>)
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>message</span> <span style=color:#75715e>// wartości zwracamy za pomocą return &lt;wartość&gt;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Return gdy nic nie chcemy zwracać
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>earlyReturn</span>(<span style=color:#a6e22e>value</span>: <span style=color:#66d9ef>boolean</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>value</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Jeśli nie zwracamy wartości możemy wypisać return i oznacza to to 
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// że wychodzimy w funkcji i nic dalej się w niej nie dzieje
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>return</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#39;Hello&#39;</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Więcej niż 1 return - możemy definiować ich więcej jeśli mam rozgałęzienia jak ify bądź pętle
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>moreReturns</span>(<span style=color:#a6e22e>value</span>: <span style=color:#66d9ef>boolean</span>, <span style=color:#a6e22e>message</span>: <span style=color:#66d9ef>string</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>string</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>value</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#39;true value &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>message</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#39;false value &#39;</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>message</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Co ciekawe możemy przypisywać funkcje do zmiennych (2 wersja funkcji), ale też przyjmować je jako argumenty
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// co pozwala na ciekawe rozwiązania na różne problemy i w wielu przypadkach pozwala na stworzenie
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// bardzo elastycznej funkcji. Możemy na przykład stworzyć funkcję calculate, która w zależności, od tego jaką operację
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// przyjmię taki będzie wynik końcowy. Tworzymy funkcję która przyjmuje 2 liczby i funkcję, która też przyjmuje 2 liczby
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// i zwraca liczbę (nasza funkcja calcuate też zwraca liczbę).
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>calculate</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>a</span>: <span style=color:#66d9ef>number</span>, <span style=color:#a6e22e>b</span>: <span style=color:#66d9ef>number</span>, <span style=color:#a6e22e>operation</span><span style=color:#f92672>:</span> (<span style=color:#a6e22e>x</span>: <span style=color:#66d9ef>number</span>, <span style=color:#a6e22e>y</span>: <span style=color:#66d9ef>number</span>) <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>number</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>number</span> {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// wywołujemy ją jak normalną funkcję, parametry a i b są tylko po to żeby je przekazać dalej
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>operation</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// potem możemy sobie definiować funkcje spełniające definiję funkcje (number, number): number, na przykład
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// nazwy parametrów nie muszą się zgadzać (x, y), ale typy jak najbardziej
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>add</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>a</span>: <span style=color:#66d9ef>number</span>, <span style=color:#a6e22e>b</span>: <span style=color:#66d9ef>number</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>number</span> <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>b</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>sub</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>a</span>: <span style=color:#66d9ef>number</span>, <span style=color:#a6e22e>b</span>: <span style=color:#66d9ef>number</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>number</span> <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>a</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>b</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// A nasze calculate używamy w następujący sposób
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>a</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>15</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>b</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>calculate</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>add</span>) <span style=color:#75715e>// podajemy funkcję bez (), nawiasy oznaczają wywołanie a bez zwykłą wartość
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result2</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>calculate</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, <span style=color:#a6e22e>sub</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>result</span>) <span style=color:#75715e>// -&gt; 20
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#a6e22e>result2</span>) <span style=color:#75715e>// -&gt; 10
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Możemy też używać tak zwanych wyrażeń Lambda, czyli skróconych funkcji
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result3</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>calculate</span>(<span style=color:#a6e22e>a</span>, <span style=color:#a6e22e>b</span>, (<span style=color:#a6e22e>x</span>, <span style=color:#a6e22e>y</span>) <span style=color:#f92672>=&gt;</span> <span style=color:#a6e22e>x</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>y</span>) <span style=color:#75715e>// to samo co z add
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Możemy też zwracać funkcję
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>returnLogger</span> <span style=color:#f92672>=</span> () <span style=color:#f92672>=&gt;</span> (<span style=color:#66d9ef>any</span>) <span style=color:#f92672>=&gt;</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>returnLogger</span>()(<span style=color:#e6db74>&#39;Hello&#39;</span>) <span style=color:#75715e>// pierwszy () zwraca console.log a drugi () wywołuje console.log z argumentem &#39;Hello&#39;
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// Funkcje rekurencyjne, jest to funkcja która wywołuje samą siebie, na przykład
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>count</span>(<span style=color:#a6e22e>n</span>: <span style=color:#66d9ef>number</span>, <span style=color:#a6e22e>max</span>: <span style=color:#66d9ef>number</span>)<span style=color:#f92672>:</span> <span style=color:#66d9ef>number</span> {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> (<span style=color:#a6e22e>n</span> <span style=color:#f92672>&gt;=</span> <span style=color:#a6e22e>max</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>n</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>count</span>(<span style=color:#a6e22e>n</span> <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>, <span style=color:#a6e22e>max</span>)
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// jeśli podamy n = 0 i max = 2, wtedy
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>result</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>count</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>2</span>) <span style=color:#75715e>// = 2
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// wewnątrz
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// count(0, 2)
+</span></span></span><span style=display:flex><span><span style=color:#75715e>//  count(1, 2)
+</span></span></span><span style=display:flex><span><span style=color:#75715e>//   count(2, 2) - wypełnia ifa i zwraca 2 i wcześniejsze funkcje zwracają to co ta czyli 2
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// jak zawsze po detale odsyłam do internetów
+</span></span></span></code></pre></div><h2 id=enum-y>Enum-y</h2><p>WIP</p><h2 id=klasy-i-objekty>Klasy i Objekty</h2><p>WIP</p><h2 id=projekty-o-wielu-plikach-export--import>Projekty o wielu plikach (export / import)</h2><p>Jeśli chcemy podzielić nasz kod na parę plików (a prawie zawsze chcemy), gdzie każdy plik spełnia swoją unikalną
+logikę, potrzebujemy na to sposobu na komunikowanie się pomiędzy plikami i przesyłanie funkcji / wartości pomiędzy nimi.
+Robimy to za pomocą słów <strong>export</strong> i <strong>import</strong>. Pokażę jak je przesyłać pomiędzy plikami.</p><h2 id=słownik>Słownik</h2><dl><dt>Warunek</dt><dd>Miejsce gdzie powinna się znaleźć wartość boolean</dd></dl></div></div></div></div></div><script src=https://jancieslak.github.io/notki.github.io/js/feather.min.js></script>
+<script>feather.replace()</script></body></html>
